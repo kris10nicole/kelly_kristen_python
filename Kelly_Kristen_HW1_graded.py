@@ -1,4 +1,4 @@
-#Stuart- As part of your documentation you should include the purpose (in the help format) and inputs to
+#Stuart- Excellent documentation in general, but as part of your documentation you should include the purpose (in the help format) and inputs to
 #each of the major functions that you write (~one per problem) you include the information, just not inside your functions
 #Stuart- Any points lost due to lack of documentation or using script instead of functions
 # can be regained if the issues are corrected. Please email me once you have corrected the issue
@@ -265,6 +265,8 @@ while True:
 """Number 11
 The purpose of this program is to split combined lines of sentences into separate lines.
 """
+#Stuart- Does this run for you or is there a typo in one of your line(s)? 
+
 #Here we want to import the regular expression module
 import re
 
@@ -292,6 +294,11 @@ sentence_splitter('examplelinesplitter.txt') #This is an example text file to te
 """Number 12
 The purpose of this program is the create an anagram based off a list of words by rearranging the letters within a given word. 
 """
+#Stuart- Hard coded filepath over rides file sent to function
+# Stuart- The problem asks for you to find the set that contains the most words
+# you have a good bit of code for finding anagrams in the list, but you need
+# to find the set that contains the most anagrams.
+
 def  anagram(filepath): #Here we define the function and use the parameter filepath
      filepath= open ('anagram.txt').read()   #Here we open the anagram.txt file, read it, and assign it to the variable filepath
      words=filepath.split()   #Here we want to remove all trailing spaces on each line
@@ -313,19 +320,21 @@ This program was difficult so I had some help from a few work colleagues who are
 from random import randrange
 import re
 
-def brackets(N):  #Here we define the function called brackets with the parameter n since we want to generate a string of N brackets
-   i=0   #We assign zero to the variable i
-   output=''   #We assign a text string to the variable output
-   brackets = '[]'  #We assign the text string of brackets to the variable brackets
+#Stuart- I had to fix some indentation issues. Make sure to use consistent indentation. Also you do not define the variable result
+# which leads to an additional error. you define brackets_str, but later call for bracket_str. Also you don't gurantee paired number
+# of open and close brackets.
 
-#Below, we want to create a loop for evaluating the choice of N
+def brackets(N):  #Here we define the function called brackets with the parameter n since we want to generate a string of N brackets
+    i=0   #We assign zero to the variable i
+    output=''   #We assign a text string to the variable output
+    brackets = '[]'  #We assign the text string of brackets to the variable brackets
+    #Below, we want to create a loop for evaluating the choice of N
     while i < N*2: #If i is less than N*2...
         output += brackets[randrange(len(brackets))]  #...then output equals a random range of the length of the brackets...this allows us to shuffle the brackets
         i+=1 #Here i is able to increase be an increment of one
 
     brackets_str = output   #This assignes the output to a new variable brackets_str
-
-#Here we want to remove all pairs ([[ or ]])of brackets using regular expressions so that they don't mis-nest
+    #Here we want to remove all pairs ([[ or ]])of brackets using regular expressions so that they don't mis-nest
     while len(re.findall(r'\[\]', output)) > 0: #Here we remove the pairs of brackets by using the find all function
         output = re.sub(r'\[\]', '', output) #Here we remove the brackets and concatenate it
 
